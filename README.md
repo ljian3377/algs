@@ -1,1 +1,1 @@
-# algs
+# algorithms
