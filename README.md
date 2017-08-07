@@ -1,2 +1,2 @@
 # algorithms
-* arithmetic expression evaluation
+* arithmetic expression evaluation: Infix Expression, two stack
