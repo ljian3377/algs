@@ -1,1 +1,4 @@
-*.out
+*
+!*.cpp
+!*.gitignore
+!*.h
