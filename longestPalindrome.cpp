@@ -1,3 +1,7 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
 class Solution {
 public:
     // Transform S into T.
@@ -9,28 +13,24 @@ public:
             res += '#';
             res +=  c;
         }
-        res += '$';
+        res += "#$";
         return res;
     }
-    // "ababaaba"
+
     string longestPalindrome(string s) {
         string str = preProcess(s);
         int T[2003];
         int len = str.size();
         for (int i=0; i< len; i++) { T[i] = 0;}
-        
-        cout<<str<<endl;
 
         for (int i=1; i< len-1; i++) {
             // expand from i, T[i] keeps the length that is already examined
             int lenP = T[i];
             while (str[i-lenP-1] == str[i+lenP+1]) lenP++;
             T[i] = lenP;
-            cout<<i<<" T[i]:"<<T[i]<<endl;
+
             int j;
             for (j=1; j <= lenP; j++) {
-                // fill in the right part 
-                cout<<"i+j"<< i+j <<":"<<T[i+j]<<endl;
                 // palindrome centered at i+j exceed
                 if (T[i-j] + j >= lenP) {
                     T[i+j] = min(T[i-j], lenP-j);
@@ -38,9 +38,7 @@ public:
                 } else {
                     T[i+j] = T[i-j];
                 }
-                
             }
-            
             i = i+j-1;
         }
         
@@ -54,3 +52,14 @@ public:
         return s.substr((center-maxLen-1)/2, maxLen);
     }
 };
+
+int main() {
+    string s;
+    cin>>s;
+
+    Solution *so = new Solution();
+    cout<<so->longestPalindrome(s);
+
+    // system("pause");
+    return 0;
+}
