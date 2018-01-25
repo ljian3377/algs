@@ -94,8 +94,10 @@ int main() {
     int a[10000];
     int begin = 0, end = 0, m = -1;
     string s;
-    
-    while ((cout<<"Please type in the elements of the array, enter to end, q to quit:"<<endl) && getline(cin, s) && s.find('q')== string::npos) {
+
+    while (    (begin = end)
+            && (cout<<"Please type in the elements of the array, enter to end, q to quit:"<<endl)
+            && getline(cin, s) && s.find('q')== string::npos) {
         stringstream ostr(s);
         // cout<<"get elements:"<<s<<":"<<endl;
         while (ostr>>a[end]) {
@@ -119,7 +121,6 @@ int main() {
         }
         int mth = select(a, begin, end-1, m-1 + begin);
         cout<< "The " << m <<"th element is "<<a[mth] <<endl;
-        begin = end;
     }
     return 0;
 }
